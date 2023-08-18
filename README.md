@@ -28,7 +28,7 @@ purposes and reviewer convenience.
 # Run
 Clone the repository:
 ```commandline
-
+git clone https://github.com/ChocolateMagnate/fat
 cd fat/server
 ```
 Define the credentials. The server needs 2 crucial pieces of data: database password and JWT authentication key. Define 
