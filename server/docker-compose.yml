@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    image: fat
+    ports:
+      - "5000:5000"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - DB_HOST=mongo
+      - DB_PORT=27017
+      - DB_USERNAME=fat-client
+      - DB_PASSWORD=${DB_PASSWORD}
+      - JWT_SIGN_KEY=${JWT_SING_KEY}
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4-focal
+    environment:
+      - MONGO_INITDB_DATABASE=fat-database
+      - MONGO_INITDB_ROOT_USERNAME=fat-client
+      - MONGO_INITDB_ROOT_PASSWORD=${DB_PASSWORD}
+
+volumes:
+  mongodb_data:
